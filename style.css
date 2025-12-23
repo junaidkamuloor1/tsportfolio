@@ -1,0 +1,90 @@
+:root {
+  --primaryBlack: #10100E;
+  --secondaryChampagne: #FEF7EC;
+
+  --sans: 'Poppins', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+
+  background-color: var(--primaryBlack);
+  color: var(--secondaryChampagne);
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 2px;
+}
+
+body {
+  height: 200vh;
+}
+
+.menuBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 2rem;
+  position: fixed;
+  z-index: 100;
+}
+
+.menuBar .menuItems {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+}
+
+.menuBar .menuItems button {
+  transition: all 150ms ease-in-out;
+}
+
+.menuBar .menuItems button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.main {
+  position: relative;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.text {
+  position: absolute;
+  font-size: 3rem;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  will-change: opacity, transform;
+}
+
+/* FIRST TEXT — visible initially */
+.text-1 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* SECOND TEXT — hidden initially */
+.text-2 {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* ACTIVE STATE */
+.main.scrolled .text-1 {
+  opacity: 0;
+  transform: translateY(-30px); /* fades bottom → top */
+}
+
+.main.scrolled .text-2 {
+  opacity: 1;
+  transform: translateY(0); /* fades top → down */
+}
